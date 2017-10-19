@@ -1,0 +1,13 @@
+{%- assign data = include.data -%}
+{%- if data.first -%}
+  {%- for last in data reversed -%}
+    {%- if data.last == last and (data.last != "last" or data contains "last") -%}
+      {%- include array.json data=include.data slim=include.slim -%}
+    {%- else -%}
+      {%- include object.json data=include.data slim=include.slim -%}
+    {%- endif -%}
+    {%- break -%}
+  {%- endfor -%}
+{%- else -%}
+  {{- data | jsonify | replace: '<', '\u003c' -}}
+{%- endif -%}

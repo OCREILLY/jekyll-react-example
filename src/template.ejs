@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+
+  {%- if page.layout == "home" -%}
+    <script type="application/json" id="jekyll-data">
+      {
+        "posts": {% include jsonify.json data=site.posts slim='true' %},
+        "page": {% include jsonify.json data=page slim='true' %}
+      }
+    </script>
+  {%- else -%}
+    <script type="application/json" id="jekyll-data">
+      {
+        "page": {% include jsonify.json data=page %},
+        "content": {% include jsonify.json data=content %}
+      }
+    </script>
+  {%- endif %}
+  <script src="{{ site.baseurl }}/scripts/client.js" async></script>
+  <style type="text/css" data-ssr><%- css %></style>
+</head>
+
+<body>
+  <div id="root"><%- markup %></div>
+</body>
+
+</html>

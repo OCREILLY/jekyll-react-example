@@ -1,0 +1,9 @@
+.base {
+  width: 100%;
+}
+
+.main {
+  width: 640px;
+  padding: 1rem;
+  margin: auto;
+}
