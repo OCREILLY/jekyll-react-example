@@ -10,7 +10,7 @@
     "build:prerender": "npm-run-all -s build:prerender:webpack build:prerender:render",
     "build:prerender:render": "node scripts/server.js",
     "build:prerender:webpack": "webpack --config webpack/server.js",
-    "clean": "rimraf \"scripts\" \"jekyll/{scripts,_layouts}\"",
+    "clean": "rimraf \"scripts\" \"_layouts\"",
     "serve:jekyll": "bundle exec jekyll serve --watch --port 8000",
     "prewatch": "npm-run-all -s prewatch:clean prewatch:prerender",
     "watch": "cross-env NODE_ENV=\"development\" npm-run-all -p serve:jekyll watch:*",

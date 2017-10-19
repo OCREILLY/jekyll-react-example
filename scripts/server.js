@@ -1071,9 +1071,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var render = __WEBPACK_IMPORTED_MODULE_3_ejs___default.a.compile(__WEBPACK_IMPORTED_MODULE_7__template_ejs___default.a);
 
 var routing = {
-  '/': './jekyll/_layouts/home.html',
-  '/about/': './jekyll/_layouts/page.html',
-  '/:year/:month/:day/:title/': './jekyll/_layouts/post.html'
+  '/': './_layouts/home.html',
+  '/about/': './_layouts/page.html',
+  '/:year/:month/:day/:title/': './_layouts/post.html'
 };
 
 Promise.all(Object.keys(routing).map(function () {

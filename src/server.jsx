@@ -10,9 +10,9 @@ import router from './router';
 const render = EJS.compile(TemplateHTML);
 
 const routing = {
-  '/': './jekyll/_layouts/home.html',
-  '/about/': './jekyll/_layouts/page.html',
-  '/:year/:month/:day/:title/': './jekyll/_layouts/post.html',
+  '/': './_layouts/home.html',
+  '/about/': './_layouts/page.html',
+  '/:year/:month/:day/:title/': './_layouts/post.html',
 };
 
 async function renderFromPath(routePath) {

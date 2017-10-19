@@ -10,14 +10,14 @@ const clientConfig = {
     client: ['core-js/shim', ...(!isProduction ? ['react-hot-loader/patch'] : []), './src/client.jsx'],
   },
   output: {
-    path: path.resolve(__dirname, '../jekyll'),
+    path: path.resolve(__dirname, '../'),
   },
   plugins: isProduction ? [new MinifyPlugin()] : [new webpack.HotModuleReplacementPlugin()],
 };
 
 if (!isProduction) {
   clientConfig.devServer = {
-    contentBase: path.join(__dirname, '../jekyll'),
+    contentBase: path.join(__dirname, '../'),
     hot: true,
     host: 'localhost',
     port: 3000,
