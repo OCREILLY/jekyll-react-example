@@ -54,7 +54,7 @@ function extractData(doc) {
 
 export default {
   routeConfig: makeRouteConfig(
-    <Route path="/" Component={Base}>
+    <Route path="/jekyll-react-example/" Component={Base}>
       <Route Component={Home} getData={getData} />
       <Route path="about/" Component={Page} getData={getData} />
       <Route path=":year/:month/:day/:title/" Component={Post} getData={getData} />

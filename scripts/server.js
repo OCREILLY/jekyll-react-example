@@ -955,7 +955,7 @@ function extractData(doc) {
 /* harmony default export */ __webpack_exports__["a"] = ({
   routeConfig: Object(__WEBPACK_IMPORTED_MODULE_2_found__["makeRouteConfig"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_2_found__["Route"],
-    { path: '/', Component: __WEBPACK_IMPORTED_MODULE_5__layouts_base__["a" /* default */] },
+    { path: '/jekyll-react-example/', Component: __WEBPACK_IMPORTED_MODULE_5__layouts_base__["a" /* default */] },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { Component: __WEBPACK_IMPORTED_MODULE_6__layouts_home__["a" /* default */], getData: getData }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { path: 'about/', Component: __WEBPACK_IMPORTED_MODULE_7__layouts_page__["a" /* default */], getData: getData }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { path: ':year/:month/:day/:title/', Component: __WEBPACK_IMPORTED_MODULE_8__layouts_post__["a" /* default */], getData: getData })
@@ -1071,9 +1071,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var render = __WEBPACK_IMPORTED_MODULE_3_ejs___default.a.compile(__WEBPACK_IMPORTED_MODULE_7__template_ejs___default.a);
 
 var routing = {
-  '/': './_layouts/home.html',
-  '/about/': './_layouts/page.html',
-  '/:year/:month/:day/:title/': './_layouts/post.html'
+  '/jekyll-react-example/': './_layouts/home.html',
+  '/jekyll-react-example/about/': './_layouts/page.html',
+  '/jekyll-react-example/:year/:month/:day/:title/': './_layouts/post.html'
 };
 
 Promise.all(Object.keys(routing).map(function () {
