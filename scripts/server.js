@@ -876,14 +876,16 @@ WithStylesContext.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_static_container___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_static_container__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_found__ = __webpack_require__("found");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_found___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_found__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_exenv__ = __webpack_require__("exenv");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_exenv___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_exenv__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__("axios");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__layouts_base__ = __webpack_require__("./src/_layouts/_base.jsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__layouts_home__ = __webpack_require__("./src/_layouts/home.jsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__layouts_page__ = __webpack_require__("./src/_layouts/page.jsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__layouts_post__ = __webpack_require__("./src/_layouts/post.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_farce__ = __webpack_require__("farce");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_farce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_farce__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exenv__ = __webpack_require__("exenv");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_exenv___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_exenv__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios__ = __webpack_require__("axios");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__layouts_base__ = __webpack_require__("./src/_layouts/_base.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__layouts_home__ = __webpack_require__("./src/_layouts/home.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__layouts_page__ = __webpack_require__("./src/_layouts/page.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__layouts_post__ = __webpack_require__("./src/_layouts/post.jsx");
 var getData = function () {
   var _ref2 = _asyncToGenerator(function* (_ref) {
     var location = _ref.location;
@@ -893,7 +895,7 @@ var getData = function () {
     }
 
     try {
-      var _ref3 = yield __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get(location.pathname, { responseType: 'document' }),
+      var _ref3 = yield __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get(location.pathname, { responseType: 'document' }),
           doc = _ref3.data;
 
       var data = extractData(doc);
@@ -925,7 +927,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 
-var isServer = !__WEBPACK_IMPORTED_MODULE_3_exenv___default.a.canUseDOM;
+
+var isServer = !__WEBPACK_IMPORTED_MODULE_4_exenv___default.a.canUseDOM;
+var isDevelopment = "production" !== 'production';
 
 var mockJekyllData = function mockJekyllData() {
   return new Proxy({
@@ -953,12 +957,15 @@ function extractData(doc) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  historyMiddlewares: [Object(__WEBPACK_IMPORTED_MODULE_3_farce__["createBasenameMiddleware"])({
+    basename: isDevelopment ? '' : '/jekyll-react-example'
+  })],
   routeConfig: Object(__WEBPACK_IMPORTED_MODULE_2_found__["makeRouteConfig"])(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_2_found__["Route"],
-    { path: '/jekyll-react-example/', Component: __WEBPACK_IMPORTED_MODULE_5__layouts_base__["a" /* default */] },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { Component: __WEBPACK_IMPORTED_MODULE_6__layouts_home__["a" /* default */], getData: getData }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { path: 'about/', Component: __WEBPACK_IMPORTED_MODULE_7__layouts_page__["a" /* default */], getData: getData }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { path: ':year/:month/:day/:title/', Component: __WEBPACK_IMPORTED_MODULE_8__layouts_post__["a" /* default */], getData: getData })
+    { path: '/', Component: __WEBPACK_IMPORTED_MODULE_6__layouts_base__["a" /* default */] },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { Component: __WEBPACK_IMPORTED_MODULE_7__layouts_home__["a" /* default */], getData: getData }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { path: 'about/', Component: __WEBPACK_IMPORTED_MODULE_8__layouts_page__["a" /* default */], getData: getData }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_found__["Route"], { path: ':year/:month/:day/:title/', Component: __WEBPACK_IMPORTED_MODULE_9__layouts_post__["a" /* default */], getData: getData })
   )),
   render: Object(__WEBPACK_IMPORTED_MODULE_2_found__["createRender"])({
     renderError: function renderError(_ref4) {
@@ -1031,7 +1038,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__router__ = __webpack_require__("./src/router.jsx");
 var renderFromPath = function () {
   var _ref = _asyncToGenerator(function* (routePath) {
-    var _ref2 = yield Object(__WEBPACK_IMPORTED_MODULE_2_found_lib_server__["getFarceResult"])(Object.assign({ url: routePath }, __WEBPACK_IMPORTED_MODULE_8__router__["a" /* default */])),
+    var _ref2 = yield Object(__WEBPACK_IMPORTED_MODULE_2_found_lib_server__["getFarceResult"])(Object.assign({
+      url: isDevelopment ? routePath : '/jekyll-react-example' + routePath
+    }, __WEBPACK_IMPORTED_MODULE_8__router__["a" /* default */])),
         element = _ref2.element;
 
     var css = new Set();
@@ -1069,11 +1078,12 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 var render = __WEBPACK_IMPORTED_MODULE_3_ejs___default.a.compile(__WEBPACK_IMPORTED_MODULE_7__template_ejs___default.a);
+var isDevelopment = "production" !== 'production';
 
 var routing = {
-  '/jekyll-react-example/': './_layouts/home.html',
-  '/jekyll-react-example/about/': './_layouts/page.html',
-  '/jekyll-react-example/:year/:month/:day/:title/': './_layouts/post.html'
+  '/': './_layouts/home.html',
+  '/about/': './_layouts/page.html',
+  '/:year/:month/:day/:title/': './_layouts/post.html'
 };
 
 Promise.all(Object.keys(routing).map(function () {
@@ -1143,6 +1153,13 @@ module.exports = require("ejs");
 /***/ (function(module, exports) {
 
 module.exports = require("exenv");
+
+/***/ }),
+
+/***/ "farce":
+/***/ (function(module, exports) {
+
+module.exports = require("farce");
 
 /***/ }),
 

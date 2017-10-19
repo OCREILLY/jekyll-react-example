@@ -8,15 +8,23 @@ import WithStylesContext from './components/WithStylesContext';
 import TemplateHTML from './template.ejs';
 import router from './router';
 const render = EJS.compile(TemplateHTML);
+const isDevelopment = process.env['NODE_ENV'] !== 'production';
 
 const routing = {
-  '/jekyll-react-example/': './_layouts/home.html',
-  '/jekyll-react-example/about/': './_layouts/page.html',
-  '/jekyll-react-example/:year/:month/:day/:title/': './_layouts/post.html',
+  '/': './_layouts/home.html',
+  '/about/': './_layouts/page.html',
+  '/:year/:month/:day/:title/': './_layouts/post.html',
 };
 
 async function renderFromPath(routePath) {
-  const { element } = await getFarceResult(Object.assign({ url: routePath }, router));
+  const { element } = await getFarceResult(
+    Object.assign(
+      {
+        url: isDevelopment ? routePath : `/jekyll-react-example${routePath}`,
+      },
+      router
+    )
+  );
 
   const css = new Set();
   const context = {};

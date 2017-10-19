@@ -1,6 +1,7 @@
 import React from 'react';
 import * as StaticContainer from 'react-static-container';
 import { ElementsRenderer, HttpError, createRender, makeRouteConfig, Route } from 'found';
+import { createBasenameMiddleware } from 'farce';
 import ExecutionEnvironment from 'exenv';
 import axios from 'axios';
 
@@ -10,6 +11,7 @@ import Page from './_layouts/page';
 import Post from './_layouts/post';
 
 const isServer = !ExecutionEnvironment.canUseDOM;
+const isDevelopment = process.env['NODE_ENV'] !== 'production';
 
 const mockJekyllData = () =>
   new Proxy(
@@ -53,8 +55,13 @@ function extractData(doc) {
 }
 
 export default {
+  historyMiddlewares: [
+    createBasenameMiddleware({
+      basename: isDevelopment ? '' : '/jekyll-react-example',
+    }),
+  ],
   routeConfig: makeRouteConfig(
-    <Route path="/jekyll-react-example/" Component={Base}>
+    <Route path="/" Component={Base}>
       <Route Component={Home} getData={getData} />
       <Route path="about/" Component={Page} getData={getData} />
       <Route path=":year/:month/:day/:title/" Component={Post} getData={getData} />
