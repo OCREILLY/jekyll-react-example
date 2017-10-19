@@ -895,7 +895,9 @@ var getData = function () {
     }
 
     try {
-      var _ref3 = yield __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get(location.pathname, { responseType: 'document' }),
+      var path = isDevelopment ? location.pathname : '/jekyll-react-example' + location.pathname;
+
+      var _ref3 = yield __WEBPACK_IMPORTED_MODULE_5_axios___default.a.get(path, { responseType: 'document' }),
           doc = _ref3.data;
 
       var data = extractData(doc);

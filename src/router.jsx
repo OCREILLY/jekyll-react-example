@@ -32,7 +32,8 @@ async function getData({ location }) {
   }
 
   try {
-    const { data: doc } = await axios.get(location.pathname, { responseType: 'document' });
+    const path = isDevelopment ? location.pathname : `/jekyll-react-example${location.pathname}`;
+    const { data: doc } = await axios.get(path, { responseType: 'document' });
     const data = extractData(doc);
     if (!data) {
       throw new HttpError(404);
